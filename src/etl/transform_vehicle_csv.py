@@ -28,5 +28,4 @@ def transform_data(raw_data):
     # Interpolate missing data
     df['mileage'].fillna(df['mileage'].interpolate(), inplace=True)
     
-    print (df)
     return df

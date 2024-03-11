@@ -9,13 +9,13 @@ class Vin(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     vin = Column(String, unique=True, index=True)
-    company = Column(String)
 
 class VehicleData(Base):
     __tablename__ = 'vehicle_data'
 
     id = Column(Integer, primary_key=True, index=True)
     vin_id = Column(Integer, ForeignKey('vins.id'), nullable=False)
+    company = Column(String)
     date_hour = Column(DateTime)
     charging_power = Column(Float)
     remaining_electrical_range = Column(Float)

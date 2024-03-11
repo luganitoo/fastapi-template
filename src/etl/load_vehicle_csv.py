@@ -23,7 +23,6 @@ def load_data(df, db_url):
         if not vin:
             vin = Vin(
                 vin=row['vin'],
-                company=row['company']
             )
             session.add(vin)
             session.commit()
@@ -44,10 +43,11 @@ def load_data(df, db_url):
         # Fix engine_status
         engine_status = str(row['enginestatus']).upper()
         row['enginestatus'] = 'ON' if ('ON' in engine_status) or ('1' in engine_status) else 'OFF'
-        
+
         # Create and add the vehicle data with the associated vin
         vehicle_data = VehicleData(
             vin_id=vin.id,
+            company=row['company'],
             date_hour=row['date_hour'],
             charging_power=row['chargingpower'],
             remaining_electrical_range=row['remainingelectricalrange'],
