@@ -87,7 +87,7 @@ Follow the steps below to set up and run the FastAPI application locally.
 
 7. **Access the FastAPI application at [http://localhost:80](http://localhost:80)**
    
-**IMPORTANT**: It is mandatory that the SECRET_KEY token is sent in the Authorization Header to make the API calls. You can use curl, or any tool/extension of your choice to generate the requests. Otherwise you'll get a authentication error.
+**IMPORTANT**: It is mandatory that the SECRET_KEY token is sent in the Authorization Header to make the API calls. You can use curl, or any tool/extension of your choice to generate the requests. Otherwise you'll get an authentication error.
 
 ## API Endpoints
 
