@@ -7,6 +7,11 @@ client = TestClient(app)
 
 headers = {"Authorization": f"Bearer {os.getenv('SECRET_KEY')}"}
 
+def test_load_data():
+    response = client.get("/load-data", headers=headers)
+    assert response.status_code == 200
+    assert response.json() == {"message": "Data loaded successfully"}
+    
 def test_unauthenticated_request():
     response = client.get("/api/v1/vins")
     assert response.status_code == 401
