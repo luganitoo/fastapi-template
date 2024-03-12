@@ -1,6 +1,7 @@
-# FastAPI Application Documentation
+# FastAPI ETL API template Documentation
 
-This FastAPI application provides an API for [brief description of your application]. It includes various endpoints to query and retrieve vehicle-related data stored in a relational database. The application also integrates geolocation services to provide location information based on latitude and longitude coordinates.
+This FastAPI application performs an ETL process retrieving data from a CSV file and loads it into a database.
+It provides an API for various endpoints to query and retrieve vehicle-related data stored in a relational database.
 
 ## Table of Contents
 
