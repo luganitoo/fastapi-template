@@ -108,30 +108,56 @@ Follow the steps below to set up and run the FastAPI application locally.
 - **Endpoint:** `/api/v1/data/{column}/{vin}`
 - **Method:** `GET`
 - **Description:** Retrieve the last updated data from a specific column for a given VIN.
+- **See example:**
+  
+  ```bash
+  /api/v1/data/company/cLrVrQDRWs0069145
+  ```
 
 ### Get Last Updated Data by VIN
 
 - **Endpoint:** `/api/v1/vehicle/{vin}/last`
 - **Method:** `GET`
 - **Description:** Retrieve the last updated data from all columns for a specific vehicle VIN.
-
+- **See example:**
+  
+  ```bash
+  /api/v1/vehicle/cLrVrQDRWs0069145/last
+  ```
+  
 ### Get All Data by VIN
 
 - **Endpoint:** `/api/v1/vehicle/{vin}`
 - **Method:** `GET`
 - **Description:** Retrieve all data entries for a specific vehicle VIN.
-
+- **See example:**
+  
+  ```bash
+  /api/v1/vehicle/cLrVrQDRWs0069145
+  ```
+  
 ### Get Data from Time Window
 
 - **Endpoint:** `/api/v1/vehicles/date-hour-range`
 - **Method:** `GET`
 - **Description:** Retrieve data entries within a specified time window, with optional data points filtering.
+- The **start_time** and **end_time** should be passed as parameters. Please ensure that the time is formatted according to the ISO 8601 standard, such as "2024-01-20T23:59:59".
+- For optional only datapoints, the parameter **datapoints** should be used alongside the time parameters.
+- **See example:**
+  
+  ```bash
+  /api/v1/vehicles/date-hour-range?start_time=2023-07-14T23:35:00&end_time=2024-03-10T23:59:59&datapoints=speed,date_hour
+  ```
 
 ### Get Statistics by VIN
 
 - **Endpoint:** `/api/v1/statistics/{vin}`
 - **Method:** `GET`
 - **Description:** Calculate basic statistics for a specific vehicle VIN.
+   **See example:**
+  ```bash
+  /api/v1/statistics/cLrVrQDRWs0069145
+  ```
 
 ## Docker Commands
 
