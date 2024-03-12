@@ -1,31 +1,5 @@
 import pandas as pd
 import numpy as np
-from geopy.geocoders import Nominatim
-
-# Initialize the geolocator
-geolocator = Nominatim(user_agent="vehicle_locator")
-
-def get_address(latitude, longitude):
-    location = geolocator.reverse((latitude, longitude), language='en')
-    
-    if location:
-        address_components = location.raw.get('address', {})
-        state = address_components.get('state', '')
-        city = address_components.get('city', '')
-        street = address_components.get('road', '')
-        print ('-------------------------------')
-        print (address_components)
-        print (state)
-        print (city)
-        print (street)
-        print ('-------------------------------')
-        return {
-            'state': state,
-            'city': city,
-            'street': street
-        }
-    else:
-        return None
 
 def transform_data(raw_data):
     df = raw_data.copy()
@@ -52,10 +26,9 @@ def transform_data(raw_data):
     df[['latitude', 'longitude']] = df['geolocation'].str.split(',', expand=True).astype(float)
     
     # Add 'address' column with location information
-    df['address'] = df.apply(lambda row: get_address(row['latitude'], row['longitude']), axis=1)
+    # df['address'] = df.apply(lambda row: get_address(row['latitude'], row['longitude']), axis=1)
 
     # Interpolate missing data
     df['mileage'].fillna(df['mileage'].interpolate(), inplace=True)
-    
     
     return df

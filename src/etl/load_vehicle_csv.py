@@ -1,14 +1,11 @@
 import pandas as pd
-from sqlalchemy import create_engine, Column, String, Float, DateTime, Integer
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from src.api.models import Base, VehicleData, Vin
 
 def create_tables(db_url):
-    # print(f"Creating tables with URL: {db_url}")
     engine = create_engine(db_url)
     Base.metadata.create_all(engine)
-    # print("Tables created successfully")
     
 def load_data(df, db_url):
     create_tables(db_url)
