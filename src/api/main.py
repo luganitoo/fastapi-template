@@ -114,7 +114,7 @@ async def get_vehicle_last_data(vin: str, db: Session = Depends(get_db), current
     json_compatible_item_data = jsonable_encoder(result)
     return JSONResponse(content=json_compatible_item_data)
 
-# Get all data from a specific vehicle VIN xxxxxxxxxxxxxxx
+# Get all data from a specific vehicle VIN
 @app.get("/api/v1/vehicle/{vin}")
 async def get_vehicle_data(vin: str, db: Session = Depends(get_db), current_user: dict = Depends(authenticate)):
     query = (
