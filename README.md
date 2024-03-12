@@ -24,6 +24,8 @@ It provides an API for various endpoints to query and retrieve vehicle-related d
 
 Follow the steps below to set up and run the FastAPI application locally.
 
+**IMPORTANT:** make sure your device's port 80 is free, and you have docker running.
+
 ### Prerequisites
 
 - [Docker](https://www.docker.com/get-started)
