@@ -31,32 +31,47 @@ Follow the steps below to set up and run the FastAPI application locally.
 
 ### Running the Application
 
-1. Clone the repository to your local machine:
+1. **Clone the repository to your local machine**:
 
    ```bash
    git clone https://github.com/luganitoo/fastapi-template.git
    ```
 
-2. Navigate to the project directory:
+2. **Navigate to the project directory**:
 
    ```bash
    cd fastapi-template
    ```
 
-3. **Change env.example to .env, or create your own .env:**
+3. **Rename .env.example to .env, or create your own .env:**
+
+   Linux or Mac:
+   ```bash
+   cd src
+   mv .env.example .env
+   cd ..
+   ```
+   Windows:
+    ```bash
+   cd src
+   ren .env.example .env
+   cd ..
+    ```
+    
+5. **To run tests, run the command below to create a test container:**
 
    ```bash
-   mv src/env.example src/.env
+   docker-compose -f docker-compose.test.yaml run --rm test
    ```
-
-4. **Build the Docker image and start the container:**
+   
+5. **To run the app, build the Docker image and start the container:**
 
    ```bash
    docker-compose build
    docker-compose up
    ```
 
-5. **Execute a GET request to the /load-data endpoint with the authentication token from your .env file. This action triggers the ETL process, loading the database.:**
+6. **Execute a GET request to the /load-data endpoint with the authentication token from your .env file. This action triggers the ETL process, loading the database.:**
 
    Substitute 'YOUR_SECRET_KEY_HERE' with your authentication token:
    ```bash
@@ -68,7 +83,7 @@ Follow the steps below to set up and run the FastAPI application locally.
    ```
    
 
-6. **Access the FastAPI application at [http://localhost:80](http://localhost:80).**
+7. **Access the FastAPI application at [http://localhost:80](http://localhost:80).**
 
 ## API Endpoints
 
