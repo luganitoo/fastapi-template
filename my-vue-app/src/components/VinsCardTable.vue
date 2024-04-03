@@ -49,7 +49,7 @@ const fetchVinData = async (vin: string) => {
 </script>
 
 <template>
-  <Card >
+  <Card class="w-[400px]">
     <CardHeader>
       <CardTitle>VINs</CardTitle>
       <CardDescription>Vehicle Identification</CardDescription>
@@ -62,7 +62,7 @@ const fetchVinData = async (vin: string) => {
             <TableHead class="w-[100px]">
               VIN
             </TableHead>
-            <TableHead class="text-center">
+            <TableHead class="text-right">
               Options
             </TableHead>
           </TableRow>

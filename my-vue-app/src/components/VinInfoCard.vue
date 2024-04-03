@@ -27,7 +27,7 @@ const location = computed(() => cardData.value?.location);
     </CardHeader>
     <CardContent class="w-[400px]">
       <div class="text-xl font-bold flex justify-center ">
-        <img :src="'https://flagcdn.com/' + location.country_code + '.svg'" class="h-6 "/>
+        <img :src="'https://flagcdn.com/' + location?.country_code + '.svg'" class="h-6 "/>
       </div>
       <div class="text-xl font-bold ">
         {{ location?.city }}, {{ location?.country }}

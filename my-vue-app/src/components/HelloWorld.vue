@@ -22,22 +22,6 @@ import { InfoIcon } from 'lucide-vue-next'
 import VinsCardTable from './VinsCardTable.vue'
 import VinInfoCard from './VinInfoCard.vue'
 
-// http://localhost:8000/api/v1/vins
-
-
-// const vinsData=ref([])
-
-// const getVins = async() => {
-//   return fetch('http://localhost:8000/api/v1/vins')
-//   .then(response=>response.json())
-// }
-
-// onMounted(()=>{
-//   getVins().then(data=>{
-//     vinsData.value = data
-//   })
-// })
-
 defineProps<{ msg: string }>()
 
 const count = ref(0)
@@ -46,10 +30,10 @@ const count = ref(0)
 <template>
   <h1>{{ msg }}</h1>
 
-  <div class="card">
+  <!-- <div class="card">
     <Button type="button" @click="count++">count is {{ count }}</Button>
-  </div>
-  <div class="flex gap-5">
+  </div> -->
+  <div class="flex gap-5 py-5">
     <VinsCardTable/>
     <VinInfoCard/>
   </div>
