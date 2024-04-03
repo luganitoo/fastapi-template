@@ -43,9 +43,11 @@ def get_location(latitude, longitude):
     else:
         return None
     
+    
+# , current_user: dict = Depends(authenticate)
 # Get all VINs
 @app.get("/api/v1/vins")
-async def get_vins(db: Session = Depends(get_db), current_user: dict = Depends(authenticate)):
+async def get_vins(db: Session = Depends(get_db)):
     query = db.query(Vin.vin).all()
         
     if query is None: 
@@ -56,7 +58,7 @@ async def get_vins(db: Session = Depends(get_db), current_user: dict = Depends(a
 
 # Get all companies
 @app.get("/api/v1/companies")
-async def get_companies(db: Session = Depends(get_db), current_user: dict = Depends(authenticate)):
+async def get_companies(db: Session = Depends(get_db)):
     
     query = db.query(VehicleData.company).distinct().all()
 
@@ -69,7 +71,7 @@ async def get_companies(db: Session = Depends(get_db), current_user: dict = Depe
 
 # Get last updated data from column by VIN eg. Company, Speed
 @app.get("/api/v1/data/{column}/{vin}")
-async def get_column_data(column: str, vin: str, db: Session = Depends(get_db), current_user: dict = Depends(authenticate)):
+async def get_column_data(column: str, vin: str, db: Session = Depends(get_db)):
 
     query = (
             db.query(VehicleData)
@@ -91,7 +93,7 @@ async def get_column_data(column: str, vin: str, db: Session = Depends(get_db), 
 
 # Get last updated data from a specific vehicle VIN
 @app.get("/api/v1/vehicle/{vin}/last")
-async def get_vehicle_last_data(vin: str, db: Session = Depends(get_db), current_user: dict = Depends(authenticate)):
+async def get_vehicle_last_data(vin: str, db: Session = Depends(get_db)):
 
     query = (
         db.query(VehicleData)
@@ -116,7 +118,7 @@ async def get_vehicle_last_data(vin: str, db: Session = Depends(get_db), current
 
 # Get all data from a specific vehicle VIN
 @app.get("/api/v1/vehicle/{vin}")
-async def get_vehicle_data(vin: str, db: Session = Depends(get_db), current_user: dict = Depends(authenticate)):
+async def get_vehicle_data(vin: str, db: Session = Depends(get_db)):
     query = (
         db.query(VehicleData)
         .join(Vin, Vin.id == VehicleData.vin_id)
@@ -133,7 +135,7 @@ async def get_vehicle_data(vin: str, db: Session = Depends(get_db), current_user
 
 # Get all data from a time window, with optional datapoints
 @app.get("/api/v1/vehicles/date-hour-range")
-async def get_data_from_time(start_time: str, end_time: str, datapoints: str | None = None, db: Session = Depends(get_db), current_user: dict = Depends(authenticate)):
+async def get_data_from_time(start_time: str, end_time: str, datapoints: str | None = None, db: Session = Depends(get_db)):
 
     start_datetime = datetime.fromisoformat(start_time)
     end_datetime = datetime.fromisoformat(end_time)
@@ -171,7 +173,7 @@ async def get_data_from_time(start_time: str, end_time: str, datapoints: str | N
 
 # Get Statistics by a specific vehicle VIN
 @app.get("/api/v1/statistics/{vin}")
-async def get_statistics(vin: str, db: Session = Depends(get_db), current_user: dict = Depends(authenticate)):
+async def get_statistics(vin: str, db: Session = Depends(get_db)):
 
     # Calculate basic statistics
     total_charging_power = db.query(func.sum(VehicleData.charging_power)).join(Vin, Vin.id == VehicleData.vin_id).filter(Vin.vin == vin).scalar()
