@@ -1,7 +1,17 @@
 # FastAPI ETL API template Documentation
-
-This FastAPI application performs an ETL process retrieving data from a CSV file and loads it into a database.
+<img src="https://raw.githubusercontent.com/luganitoo/fastapi-template/main/cartracker.png" alt="Alt text"  height="500" >
+The FastAPI application performs an ETL process retrieving data from a CSV file and loads it into a database.
 It provides an API for various endpoints to query and retrieve vehicle-related data stored in a relational database.
+The Vue client frontend displays all VINs from the database in a table, and each vehicle's location by clicking in its respective 'Options' button.
+A map with the vehicle location is shown, alongside the country, flag, city, coordinates and the vehicle remaining charge.
+
+.
+
+**IMPORTANT:** The vue frontend project is yet to be 100% synced with the fastapi backend, so for now you have to either modify the fetch urls to accomodate for the backend authorization token and port,
+or run the command below to run the server, instead of using docker (don't forget to comment out the authorizations in the functions parameters in the FastAPI app, or modify the fetch to send an authorization header in the Vue app):
+```bash
+uvicorn src.api.main:app --reload --port 8000
+```
 
 ## Table of Contents
 
